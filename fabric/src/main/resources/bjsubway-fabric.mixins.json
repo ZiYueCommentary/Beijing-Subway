@@ -1,0 +1,12 @@
+{
+    "required": true,
+    "minVersion": "0.8",
+    "package": "ziyue.bjsubway.fabric.mixin",
+    "compatibilityLevel": "JAVA_8",
+    "mixins": [
+    ],
+    "injectors": {
+        "defaultRequire": 1
+    },
+    "refmap": "tjmetro-fabric.refmap.json"
+}

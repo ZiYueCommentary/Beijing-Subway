@@ -1,0 +1,13 @@
+{
+	"required": true,
+	"minVersion": "0.8",
+	"package": "ziyue.bjsubway.mod.mixin",
+	"compatibilityLevel": "JAVA_8",
+	"mixins": [
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"client": [
+	]
+}

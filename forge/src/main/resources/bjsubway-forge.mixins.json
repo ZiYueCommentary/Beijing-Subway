@@ -1,0 +1,14 @@
+{
+    "required": true,
+    "minVersion": "0.8",
+    "package": "ziyue.bjsubway.forge.mixin",
+    "compatibilityLevel": "JAVA_8",
+    "mixins": [
+    ],
+    "injectors": {
+        "defaultRequire": 1
+    },
+    "client": [
+    ],
+    "refmap": "bjsubway-forge.refmap.json"
+}

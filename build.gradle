@@ -1,0 +1,107 @@
+plugins {
+    id "java"
+    id "de.undercouch.download" version "4.1.2"
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+    id "io.github.pacifistmc.forgix" version "1.2.9"
+}
+
+group "ziyue.bjsubway"
+version mod_version + "+" + minecraft_version
+
+forgix {
+    group = "ziyue.bjsubway"
+    mergedJarName = "Beijing-Subway-" + version + ".jar"
+    outputDir = "build"
+}
+
+subprojects {
+    apply plugin: "java"
+    apply plugin: "com.github.johnrengelman.shadow"
+
+    dependencies {
+        implementation 'com.google.code.findbugs:jsr305:+'
+    }
+
+    repositories {
+        flatDir { dirs "../libs" }
+        maven { url "https://jitpack.io" }
+        maven { url "https://maven.ziyuesinicization.site/releases/" }
+        maven { url "https://maven.shedaniel.me/" }
+    }
+
+    def mc_ver = rootProject.properties.minecraft_version
+    def mc_major = mc_ver.split("\\.")[0]
+    def mc_main = mc_ver.split("\\.")[1]
+    def mc_minor = mc_ver.split("\\.").size() > 2 ? (mc_ver.split("\\.")[2] as String).padLeft(2, '0') : 0
+    def merged_mc_version = "$mc_major$mc_main$mc_minor"
+
+    ext { // Expose to subproject
+        java_version =
+                (merged_mc_version as int) <= 11605 ? 8 :
+                        (merged_mc_version as int) <= 11701 ? 16 :
+                                (merged_mc_version as int) <= 12004 ? 17 :
+                                        21
+        full_mod_version = version
+    }
+
+    /* Manifold support */
+    tasks.withType(JavaCompile).forEach {
+        it.options.compilerArgs += ["-Xplugin:Manifold", "-AMC_VERSION=$merged_mc_version"]
+    }
+
+    // Some system don't compile with UTF-8 by default
+    compileJava {
+        options.encoding = 'UTF-8'
+    }
+
+
+    // Replace placeholder resources
+    processResources {
+        inputs.property "version", mod_version
+        inputs.property "minecraft_version", minecraft_version
+
+        filesMatching('META-INF/mods.toml') {
+            expand(
+                    "minecraft_version": minecraft_version,
+                    "version": mod_version
+            )
+        }
+
+        filesMatching("fabric.mod.json") {
+            expand(
+                    "version": mod_version,
+                    "minecraft_version": minecraft_version
+            )
+        }
+    }
+}
+
+subprojects {
+    shadowJar {
+        dependencies {
+            exclude(dependency(".*:.*"))
+        }
+    }
+
+    build.dependsOn shadowJar
+    build.finalizedBy(mergeJars)
+    assemble.finalizedBy(mergeJars)
+}
+
+//afterEvaluate {
+//    download {
+//        src "https://weblate.ziyuesinicization.site/api/components/tianjin-metro/en_us-json/file/"
+//        dest "lang.zip"
+//        overwrite true
+//        retries - 1
+//    }
+//    copy {
+//        from(zipTree("lang.zip"))
+//        into "temp_lang"
+//    }
+//    copy {
+//        from "temp_lang/tianjin-metro/en_us-json/translations"
+//        into "fabric/src/main/resources/assets/tjmetro/lang"
+//    }
+//    delete("lang.zip", "temp_lang")
+//}

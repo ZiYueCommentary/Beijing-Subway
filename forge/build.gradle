@@ -1,0 +1,84 @@
+import ziyue.bjsubway.buildtools.BuildTools
+
+plugins {
+    id "net.minecraftforge.gradle" version "+"
+    id "org.spongepowered.mixin" version "+"
+}
+
+final BuildTools buildTools = new BuildTools(minecraft_version)
+
+minecraft {
+    mappings channel: "official", version: minecraft_version
+    runs {
+        configureEach {
+            property "forge.logging.markers", "REGISTRIES"
+            property "forge.logging.console.level", "debug"
+        }
+        client {}
+        server { args "--nogui" }
+    }
+}
+
+shadowJar {
+    relocate 'ziyue.tjmetro', 'forge.ziyue.tjmetro'
+}
+
+sourceSets.main.resources { srcDir "src/generated/resources" }
+
+dependencies {
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${buildTools.dependencies.forge()}"
+    annotationProcessor "org.spongepowered:mixin:+:processor"
+    implementation fg.deobf("org.mtr:MTR-forge:${mtr_version}+${minecraft_version}-server")
+    implementation fg.deobf("ziyue.tjmetro:tjmetro-forge:${tjmetro_version}+${minecraft_version}")
+    implementation(fg.deobf("ziyue.filters:filters-forge:${buildTools.dependencies.filtersApi()}"))
+    implementation(fg.deobf("me.shedaniel.cloth:cloth-config-forge:${buildTools.dependencies.clothConfig()}"))
+    annotationProcessor 'systems.manifold:manifold-preprocessor:+'
+}
+
+mixin {
+    add sourceSets.main, "bjsubway.refmap.json"
+    add sourceSets.main, "bjsubway-forge.refmap.json"
+    config "bjsubway.mixins.json"
+    config "bjsubway-forge.mixins.json"
+    debug.verbose = true
+    debug.export = true
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(buildTools.javaLanguageVersion))
+    }
+    withSourcesJar()
+}
+
+tasks.register("setupFiles") {
+    println("Copying resources from Fabric to Forge")
+
+    delete fileTree("src/main/java/ziyue/bjsubway/mod")
+    delete fileTree("src/main/resources/assets")
+    delete fileTree("src/main/resources/data")
+
+    copy {
+        outputs.upToDateWhen { false }
+        from "../fabric/src/main/java/ziyue/bjsubway/mod"
+        into "src/main/java/ziyue/bjsubway/mod"
+    }
+
+    copy {
+        outputs.upToDateWhen { false }
+        from "../fabric/src/main/resources/assets"
+        into "src/main/resources/assets"
+    }
+
+    copy {
+        outputs.upToDateWhen { false }
+        from "../fabric/src/main/resources/data"
+        into "src/main/resources/data"
+    }
+
+    copy {
+        outputs.upToDateWhen { false }
+        from "../fabric/src/main/resources/bjsubway.mixins.json"
+        into "src/main/resources/"
+    }
+}

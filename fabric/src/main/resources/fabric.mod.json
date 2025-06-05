@@ -1,0 +1,49 @@
+{
+    "schemaVersion": 1,
+    "id": "bjsubway",
+    "version": "${version}",
+    "name": "Beijing Subway",
+    "description": "A small addon for the Minecraft Transit Railway Mod.",
+    "authors": [
+        "ZiYueCommentary"
+    ],
+    "contributors": [
+    ],
+    "contact": {
+        "homepage": "",
+        "sources": "",
+        "issues": ""
+    },
+    "custom" : {
+        "modmenu": {
+            "parent": "tjmetro",
+            "links": {
+                "modmenu.crowdin": "https://weblate.ziyuesinicization.site/engage/tianjin-metro/",
+                "modmenu.discord": "https://discord.gg/mEvEjPnVXe",
+                "modmenu.kofi": "https://ko-fi.com/ziyuecommentary",
+                "modmenu.youtube": "https://www.youtube.com/@ziyuecommentary"
+            }
+        }
+    },
+    "license": "MIT",
+    "icon": "icon.png",
+    "environment": "*",
+    "entrypoints": {
+        "modmenu": [
+            "ziyue.bjsubway.fabric.ModMenuConfig"
+        ],
+        "main": [
+            "ziyue.bjsubway.fabric.MainFabric"
+        ],
+        "client": [
+            "ziyue.bjsubway.fabric.MainFabricClient"
+        ]
+    },
+    "mixins": [
+        "bjsubway.mixins.json",
+        "bjsubway-fabric.mixins.json"
+    ],
+    "depends": {
+        "tjmetro": "*"
+    }
+}

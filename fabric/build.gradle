@@ -1,0 +1,53 @@
+import ziyue.bjsubway.buildtools.BuildTools
+
+plugins {
+    id 'fabric-loom' version '+'
+}
+
+final BuildTools buildTools = new BuildTools(minecraft_version)
+
+loom {
+    runConfigs.configureEach { ideConfigGenerated = true }
+    mixin {
+        setDefaultRefmapName("bjsubway.refmap.json")
+        setDefaultRefmapName("bjsubway-fabric.refmap.json")
+    }
+}
+
+dependencies {
+    // To change the versions see the gradle.properties file
+    minecraft "com.mojang:minecraft:${minecraft_version}"
+    mappings "net.fabricmc:yarn:${buildTools.dependencies.yarn()}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${buildTools.dependencies.fabricLoader()}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${buildTools.dependencies.fabricApi()}"
+    modApi "com.terraformersmc:modmenu:${buildTools.dependencies.modMenu()}"
+    modApi("ziyue.filters:filters-fabric:${buildTools.dependencies.filtersApi()}") {
+        exclude(group: "net.fabricmc")
+    }
+    modApi("me.shedaniel.cloth:cloth-config-fabric:${buildTools.dependencies.clothConfig()}") {
+        exclude(group: "net.fabricmc.fabric-api")
+    }
+    configurations.configureEach {
+        resolutionStrategy {
+            force("net.fabricmc:fabric-loader:${buildTools.dependencies.fabricLoader()}")
+        }
+    }
+    modImplementation "org.mtr:MTR-fabric:${mtr_version}+${minecraft_version}-server"
+    modImplementation "ziyue.tjmetro:tjmetro-fabric:${tjmetro_version}+${minecraft_version}"
+    annotationProcessor 'systems.manifold:manifold-preprocessor:+'
+}
+
+shadowJar {
+    relocate 'ziyue.tjmetro', 'fabric.ziyue.tjmetro'
+}
+
+repositories {
+    maven { url = "https://maven.terraformersmc.com/" }
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(buildTools.javaLanguageVersion))
+    }
+    withSourcesJar()
+}

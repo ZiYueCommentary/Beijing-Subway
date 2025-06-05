@@ -1,0 +1,28 @@
+pluginManagement {
+	repositories {
+		maven {
+			name = 'Fabric'
+			url = 'https://maven.fabricmc.net/'
+		}
+		mavenCentral()
+		gradlePluginPortal()
+		maven { url "https://maven.minecraftforge.net/" }
+	}
+}
+
+plugins {
+	id "org.gradle.toolchains.foojay-resolver-convention" version "+"
+	id "com.gradle.develocity" version "3.18.1"
+}
+
+include ("fabric")
+include ("forge")
+
+rootProject.name = "Beijing-Subway"
+
+develocity {
+    buildScan {
+        termsOfUseUrl = "https://gradle.com/help/legal-terms-of-use"
+        termsOfUseAgree = "yes"
+    }
+}
