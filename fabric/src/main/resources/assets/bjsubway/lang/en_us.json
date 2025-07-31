@@ -1,4 +1,13 @@
 {
     "modmenu.nameTranslation.bjsubway": "Beijing Subway",
-    "modmenu.descriptionTranslation.bjsubway": "A addon that expands Tianjin Metro mod with various things from Beijing Subway in real life."
+    "modmenu.descriptionTranslation.bjsubway": "A addon that expands Tianjin Metro mod with various things from Beijing Subway in real life.",
+
+    "itemGroup.bjsubway.beijing_subway": "Beijing Subway",
+
+    "block.bjsubway.logo": "Logo",
+
+    "config.category.bjsubway": "Beijing Subway",
+
+    "button.bjsubway.options": "Beijing Subway Options",
+    "button.bjsubway.duplicate_siding_settings": "Duplicate settings to other sidings"
 }

@@ -1,5 +1,6 @@
 package ziyue.bjsubway.mod;
 
+import org.mtr.mapping.holder.RenderLayer;
 import ziyue.bjsubway.mod.screen.ClientConfigScreen;
 import ziyue.tjmetro.mapping.ModLoaderHelper;
 
@@ -13,6 +14,8 @@ public final class BeijingSubwayClient
         if (ModLoaderHelper.hasClothConfig()) {
             ClientConfigScreen.initialize();
         }
+
+        RegistryClient.registerBlockRenderType(RenderLayer.getCutout(), BlockList.LOGO);
 
         RegistryClient.setupPackets("packet");
 

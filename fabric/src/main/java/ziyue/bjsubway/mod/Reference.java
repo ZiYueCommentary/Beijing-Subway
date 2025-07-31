@@ -10,5 +10,4 @@ public interface Reference
 {
     String MOD_ID = "bjsubway";
     String NAME = "Beijing Metro";
-    String VERSION = "1.0.0";
 }
