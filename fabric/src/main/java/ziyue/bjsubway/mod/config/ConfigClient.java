@@ -2,7 +2,6 @@ package ziyue.bjsubway.mod.config;
 
 import org.mtr.mapping.holder.Screen;
 import org.mtr.mapping.mapper.TextHelper;
-import ziyue.bjsubway.mod.Reference;
 import ziyue.bjsubway.mod.screen.ClientConfigScreen;
 import ziyue.tjmetro.mapping.ModLoaderHelper;
 import ziyue.tjmetro.mod.screen.MissingClothConfigScreen;

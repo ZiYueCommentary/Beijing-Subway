@@ -1,11 +1,6 @@
 package ziyue.bjsubway.mod.client;
 
-import org.mtr.libraries.it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import org.mtr.libraries.it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import org.mtr.libraries.it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import ziyue.bjsubway.mod.BeijingSubway;
-
-import java.awt.*;
 
 /**
  * @since 1.0.0-beta-1

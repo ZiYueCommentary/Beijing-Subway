@@ -6,8 +6,8 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
-import ziyue.bjsubway.mod.BeijingMetro;
-import ziyue.bjsubway.mod.BeijingMetroClient;
+import ziyue.bjsubway.mod.BeijingSubway;
+import ziyue.bjsubway.mod.BeijingSubwayClient;
 import ziyue.bjsubway.mod.Reference;
 import ziyue.bjsubway.mod.client.Filters;
 
@@ -21,10 +21,10 @@ public final class MainForge
     public static boolean filterInitialized = false;
 
     public MainForge() {
-        BeijingMetro.init();
+        BeijingSubway.init();
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
-            BeijingMetroClient.init();
-            MainForgeClient.registerConfigMenu();
+            BeijingSubwayClient.init();
+            ziyue.bjsubway.forge.MainForgeClient.registerConfigMenu();
         });
         MinecraftForge.EVENT_BUS.register(this);
     }
