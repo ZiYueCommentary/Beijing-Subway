@@ -1,4 +1,6 @@
 {
     "modmenu.nameTranslation.bjsubway": "北京地铁",
-    "modmenu.descriptionTranslation.bjsubway": "为天津地铁模组添加来自现实中北京地铁的内容。"
+    "modmenu.descriptionTranslation.bjsubway": "为天津地铁模组添加来自现实中北京地铁的内容。",
+    "itemGroup.bjsubway.beijing_subway": "北京地铁",
+    "button.bjsubway.duplicate_siding_settings": "复制设置到其他侧线"
 }
