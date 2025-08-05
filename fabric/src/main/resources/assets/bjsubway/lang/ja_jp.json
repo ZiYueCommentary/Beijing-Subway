@@ -1,4 +1,9 @@
 {
     "modmenu.nameTranslation.bjsubway": "北京地下鉄",
-    "modmenu.descriptionTranslation.bjsubway": "天津地下鉄アドオン用の実際の北京地下鉄の様々なもので拡張するアドオン。"
+    "modmenu.descriptionTranslation.bjsubway": "天津地下鉄アドオン用の実際の北京地下鉄の様々なもので拡張するアドオン。",
+    "itemGroup.bjsubway.beijing_subway": "北京地下鉄",
+    "block.bjsubway.logo": "ロゴ",
+    "config.category.bjsubway": "北京地下鉄",
+    "button.bjsubway.options": "北京地下鉄設定",
+    "button.bjsubway.duplicate_siding_settings": "ほかの側線に編成をコピー"
 }
