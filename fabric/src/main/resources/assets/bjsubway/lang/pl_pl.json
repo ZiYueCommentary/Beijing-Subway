@@ -1,1 +1,9 @@
-{}
+{
+    "modmenu.descriptionTranslation.bjsubway": "Dodatek do moda Tianjin Metro rozbudowujący o różnorakie rzeczy z realnego Pekińskiego Metra.",
+    "itemGroup.bjsubway.beijing_subway": "Pekińskie Metro",
+    "block.bjsubway.logo": "Logo",
+    "config.category.bjsubway": "Pekińskie Metro",
+    "button.bjsubway.options": "Ustawienia Pekińskiego Metra",
+    "button.bjsubway.duplicate_siding_settings": "Duplikuj ustawienia do innych bocznic",
+    "modmenu.nameTranslation.bjsubway": "Pekińskie Metro"
+}
