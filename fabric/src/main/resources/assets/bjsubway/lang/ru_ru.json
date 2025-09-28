@@ -1,1 +1,9 @@
-{}
+{
+    "modmenu.nameTranslation.bjsubway": "Метро Пекина",
+    "modmenu.descriptionTranslation.bjsubway": "Аддон, который расширяет Тяньцзиньский метрополитен с различными вещами из метрополитена Пекина в реальной жизни.",
+    "itemGroup.bjsubway.beijing_subway": "Метрополитен Пекина",
+    "block.bjsubway.logo": "Логотип",
+    "config.category.bjsubway": "Метрополитен Пекина",
+    "button.bjsubway.options": "Варианты метро в Пекине",
+    "button.bjsubway.duplicate_siding_settings": "Дублировать настройки на другие пути"
+}
