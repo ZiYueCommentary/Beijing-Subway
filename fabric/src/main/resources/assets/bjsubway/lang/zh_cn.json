@@ -4,5 +4,6 @@
     "itemGroup.bjsubway.beijing_subway": "北京地铁",
     "button.bjsubway.duplicate_siding_settings": "复制设置到其他侧线",
     "block.bjsubway.logo": "标志",
-    "config.category.bjsubway": "北京地铁"
+    "config.category.bjsubway": "北京地铁",
+    "button.bjsubway.options": "北京地铁设置"
 }
