@@ -1,3 +1,5 @@
 {
-    "modmenu.nameTranslation.bjsubway": "Métro de Pékin"
+    "modmenu.nameTranslation.bjsubway": "Métro de Pékin",
+    "modmenu.descriptionTranslation.bjsubway": "Tianjin Metro",
+    "block.bjsubway.logo": "Logo"
 }
